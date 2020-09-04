@@ -7,6 +7,26 @@ struct Node{
     struct Node* prev;
 };
 
+struct Node* Delete(struct Node* head, int position){
+    struct Node* temp = head;
+    if(position == 1){
+        head = temp->next;
+        free(temp);
+        return head;
+    }
+    for(int i=1; i < position-1; i++){
+        temp = temp->next; // (n-1)th node
+    }
+
+    struct Node* temp1 = temp->next; // nth node
+    struct Node* temp2 = temp1->next; // (n+1)th node
+
+    temp->next = temp1->next;
+    temp2->prev = temp1->prev;
+    free(temp1);
+    return head;
+}
+
 void Print(struct Node* head){
     while(head != NULL){
         printf("%d",head->data);
@@ -74,4 +94,11 @@ void main(){
     }
     Print(head);
     ReversePrint(head);
+
+    //delete node code below
+    int deletePosition;
+    printf("enter the postion you want to delete");
+    scanf("%d",&deletePosition);
+    head = Delete(head,deletePosition);
+    Print(head);
 }
