@@ -6,7 +6,7 @@
 char S[MAX_SIZE];
 int top = -1; //empty stack in the begining
 
-void Push(int element){
+void Push(char element){
     if(top == MAX_SIZE - 1){
         printf("stack overflow !");
         return;
@@ -37,7 +37,7 @@ void Reverse(char* C, int length){
 void main(){
     char C[MAX_SIZE];
     printf("enter the string");
-    scanf("%s",&C);
+    scanf("%s",C);
     Reverse(C,strlen(C));
     printf("%s",C);
 }
