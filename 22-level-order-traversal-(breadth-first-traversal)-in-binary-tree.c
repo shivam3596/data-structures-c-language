@@ -115,11 +115,11 @@ void main(){
     struct Node* root = NULL;
     int total,i,number;
 
-    printf("How many characters you want to insert in tree?");
+    printf("How many numbers you want to insert in tree?");
     scanf("%d",&total);
 
     for(i=0; i<total; i++){
-        printf("enter the character: ");
+        printf("enter the number: ");
         scanf("%d",&number);
         root = Insert(root,number);
     }
