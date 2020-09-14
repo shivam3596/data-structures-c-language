@@ -29,40 +29,11 @@ struct Node* Insert(struct Node* root, int number){
 
 int FindHeight(struct Node* root){
     int leftHeight,rightHeight;
-
     if(root == NULL){
         return -1;
     }
     leftHeight = FindHeight(root->left);
     rightHeight = FindHeight(root->right);
-
-    if(leftHeight > rightHeight){
-        return leftHeight+1;
-    }else{
-        return rightHeight+1;
-    }
-}
-
-int FindHeightIterative(struct Node* root){
-    struct Node* temp1 = root;
-    struct Node* temp2 = root;
-    int leftHeight = 0,rightHeight = 0;
-
-    if(root == NULL){
-        return -1;
-    }
-
-    //left subtree height
-    while(temp1->left != NULL){
-        temp1 = temp1->left;
-        leftHeight++;
-    }
-
-    //right subtree height
-    while(temp2->right != NULL){
-        temp2 = temp2->right;
-        rightHeight++;
-    }
 
     if(leftHeight > rightHeight){
         return leftHeight+1;
@@ -84,5 +55,4 @@ void main(){
         root = Insert(root,number);
     }
     printf("Height of the tree recursice approach: %d\n",FindHeight(root));
-    printf("Height of the tree iterative approach: %d",FindHeightIterative(root));
 }
