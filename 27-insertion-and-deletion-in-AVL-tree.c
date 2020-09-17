@@ -58,6 +58,15 @@ struct Node* LeftRotate(struct Node* root){
     return temp1;
 }
 
+struct Node* FindMin(struct Node* root){
+    if(root == NULL) return 0;
+
+    while(root->left != NULL){
+        root = root->left;
+    }
+    return root;
+}
+
 struct Node* Insert(struct Node* root, int number){
     struct Node* newNode = GetNewNode(number);
     //insert simillar as BST
@@ -75,6 +84,8 @@ struct Node* Insert(struct Node* root, int number){
     root->height = FindHeight(root);
     //get balance factor
     int balance = GetBalance(root);
+
+    //if node become unbalanced the there are 4 cases below
 
     //LL Case
     if(balance > 1 && number < root->left->data){
@@ -101,6 +112,78 @@ struct Node* Insert(struct Node* root, int number){
     return root;
 }
 
+struct Node* Delete(struct Node* root,int number){
+    if(root == NULL){
+        return root;
+    }
+
+    if(number < root->data){
+        root->left = Delete(root->left,number);
+    }else if(number > root->data){
+        root->right = Delete(root->right,number);
+    }else{
+        //case: 1 (No child)
+        if(root->left == NULL && root->right == NULL){
+            free(root);
+            root = NULL;
+        }
+
+        //case 2: (1 child)
+        else if(root->left == NULL){
+            struct Node* temp = root;
+            root = temp->right;
+            free(temp);
+        }else if(root->right == NULL){
+            struct Node* temp = root;
+            root = temp->left;
+            free(temp);
+        }
+
+        //case 3: (2 childern)
+        else{
+            struct Node* temp = FindMin(root->right);
+            root->data = temp->data;
+            root->right = Delete(root->right,temp->data);
+        }
+
+    }
+
+    if(root == NULL){
+        return root;
+    }
+
+    //update height
+    root->height = FindHeight(root);
+
+    //get balance factor
+    int balance = GetBalance(root);
+
+    //if node become unbalanced the there are 4 cases below
+
+    //LL Case
+    if(balance > 1 && number < GetBalance(root->left) >=0){
+        return RightRotate(root);
+    }
+
+    //RR CAse
+    if(balance < -1 && GetBalance(root->right) <=0){
+        return LeftRotate(root);
+    }
+
+    //LR Case
+    if(balance > 1 && GetBalance(root->left) <0){
+        root->left = LeftRotate(root->left);
+        return RightRotate(root);
+    }
+
+    //RL Case
+    if(balance < -1 && GetBalance(root->right) >0){
+        root->right = RightRotate(root->right);
+        return LeftRotate(root);
+    }
+    return root;
+}
+
 void Print(struct Node* root, int space){
     if(root == NULL){
         return;
@@ -122,7 +205,7 @@ void Print(struct Node* root, int space){
 
 void main(){
     struct Node* root = NULL;
-    int total,i,number;
+    int total,i,number,deleteNumber;
 
     printf("How many numbers you want to insert?");
     scanf("%d",&total);
@@ -132,5 +215,12 @@ void main(){
         scanf("%d",&number);
         root = Insert(root,number);
     }
+    Print(root,0);
+
+    printf("enter number to delete from tree: ");
+    scanf("%d",&deleteNumber);
+
+    root = Delete(root,deleteNumber);
+
     Print(root,0);
 }
