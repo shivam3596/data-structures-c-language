@@ -161,7 +161,7 @@ struct Node* Delete(struct Node* root,int number){
     //if node become unbalanced the there are 4 cases below
 
     //LL Case
-    if(balance > 1 && number < GetBalance(root->left) >=0){
+    if(balance > 1 && GetBalance(root->left) >=0){
         return RightRotate(root);
     }
 
