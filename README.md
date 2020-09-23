@@ -4,7 +4,7 @@ Basic Data Structures implementation in c/c++ language.
 
 Resources i used for learning:
 
-Pointers in C https://www.youtube.com/watch?v=h-HBipu_1P0&list=PL2_aWCzGMAwLZp6LMUKI3cc7pgGsasm2_
+Pointers in C https://www.youtube.com/playlist?list=PL2_aWCzGMAwLZp6LMUKI3cc7pgGsasm2_
 
 Recursion https://www.youtube.com/watch?v=_OmRGjbyzno&list=PL2_aWCzGMAwLz3g66WrxFGSXvSsvyfzCO
 
