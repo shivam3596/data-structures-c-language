@@ -9,7 +9,9 @@ bool BinarySearch(int* array,int total, int find){
     int end = total-1;
 
     while(start <= end){
-        int mid = (start+end)/2;
+        int mid = start + (end - start)/2; //used this in case of overflow condtion for large integer numbers
+        //int mid = (start+end)/2;
+
         if(find == array[mid]){
             return true;
         }else if(find < array[mid]){
