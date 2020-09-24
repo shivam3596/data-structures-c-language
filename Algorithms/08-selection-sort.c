@@ -3,7 +3,7 @@
 
 //Time Complexity O(n^2)
 
-int* SelectionSort(int* array,int total){
+void SelectionSort(int* array,int total){
     for(int i=0; i<total-1; i++){
         int min = i;
 
@@ -16,7 +16,6 @@ int* SelectionSort(int* array,int total){
         array[i] = array[min];
         array[min] = temp;
     }
-    return array;
 }
 
 void main(){
@@ -26,7 +25,6 @@ void main(){
     scanf("%d",&total);
 
     int array[total];
-    int* sorted;
 
     for(i=0; i<total; i++){
         printf("enter the number: ");
@@ -34,7 +32,7 @@ void main(){
         array[i] = number;
     }
 
-    sorted = SelectionSort(array,total);
+    SelectionSort(array,total);
 
     for(int j=0; j<total; j++){
         printf("%d->",array[j]);

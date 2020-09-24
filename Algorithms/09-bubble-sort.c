@@ -3,7 +3,7 @@
 
 //Time Complexity (n^2)
 
-int* BubbleSort(int* array,int total){
+void BubbleSort(int* array,int total){
     int i,j;
     for(i=0; i<total-1; i++){
         int flag = 0;
@@ -18,7 +18,6 @@ int* BubbleSort(int* array,int total){
         }
         if(flag == 0) break;
     }
-    return array;
 }
 
 void main(){
@@ -28,7 +27,6 @@ void main(){
     scanf("%d",&total);
 
     int array[total];
-    int* sorted;
 
     for(i=0 ; i<total; i++){
         printf("enter the number: ");
@@ -36,9 +34,9 @@ void main(){
         array[i] = number;
     }
 
-    sorted = BubbleSort(array,total);
+    BubbleSort(array,total);
 
     for(int j=0 ; j<total; j++){
-        printf("%d->",sorted[j]);
+        printf("%d->",array[j]);
     }
 }

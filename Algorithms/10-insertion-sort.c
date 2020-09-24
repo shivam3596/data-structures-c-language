@@ -4,7 +4,7 @@
 //Time Complexity O(n^2) in worst case
 //in best case O(n)
 
-int* InsertionSort(int* array, int total){
+void InsertionSort(int* array, int total){
     for(int i=1; i<total; i++){
         int hole = i;
         int value = array[i];
@@ -15,7 +15,6 @@ int* InsertionSort(int* array, int total){
         }
         array[hole] = value;
     }
-    return array;
 }
 
 void main(){
@@ -25,7 +24,6 @@ void main(){
     scanf("%d",&total);
 
     int array[total];
-    int* sorted;
 
     for(i=0; i<total; i++){
         printf("enter the number: ");
@@ -33,9 +31,9 @@ void main(){
         array[i] = number;
     }
 
-    sorted = InsertionSort(array,total);
+    InsertionSort(array,total);
 
     for(j=0; j<total; j++){
-        printf("%d->",sorted[j]);
+        printf("%d->",array[j]);
     }
 }
