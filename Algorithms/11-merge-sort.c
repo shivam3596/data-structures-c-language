@@ -1,6 +1,8 @@
 #include<stdio.h>
 #include<stdlib.h>
 
+//Time complexity O(n log n)
+
 void Merge(int* leftArray, int* rightArray, int* array, int leftLength, int rightLength){
     int i=0,j=0,k=0; //i for leftArray, j for rightArray , k for main array
 
