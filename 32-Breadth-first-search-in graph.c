@@ -83,7 +83,7 @@ void addEdge(struct Graph* graph, int source, int destination){
 void PrintGraph(struct Graph* graph){
     for(int i=0; i< graph->numberOfVertices; i++){
         struct Node* temp = graph->array[i].head;
-        printf("for head %d",i);
+        printf("for head %d\n",i);
         while(temp){
             printf("-> %d",temp->data);
             temp = temp->next;
